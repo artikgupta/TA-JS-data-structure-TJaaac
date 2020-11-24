@@ -16,7 +16,7 @@ students.batch = 16;
 
 // 5. Using `console.log` log the value of `batch` key from the `students` object
 
-console.log(students["batch"]);
+console.log(students.batch);
 
 // 6. Add another key in the object with the value of the variable `isAdult`. The value of the key should be `true/false`
 
