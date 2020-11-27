@@ -4,9 +4,28 @@ let userIds = [1230, 234, 1278, 984, 763, 900];
 
 // 1. Add all the values of numbers and userIds array into the new newly created array named `collection`
 
+let collection = numbers.concat(userIds);
+
+console.log(collection);
+
 // 2. Add all the even numbers from both arrays numbers and userIds into a newly created array named `evenCollection`
+let evenCollection = [];
+for (let number of collection) {
+  if (number % 2 === 0) {
+    evenCollection.push(number);
+  }
+  console.log(evenCollection);
+}
 
 // 3. Add all the odd numbers from both arrays numbers and userIds into a newly created array named `oddCollection`
+
+let oddCollection = [];
+for (let number of collection) {
+  if (number % 2 !== 0) {
+    oddCollection.push(number);
+  }
+  console.log(oddCollection);
+}
 
 /*
   @param means parameter
@@ -24,13 +43,18 @@ let userIds = [1230, 234, 1278, 984, 763, 900];
     times(5); // ['test', 'test', 'test', 'test', 'test']
 */
 
-function times() {
-  // Your code
+function times(a, b) {
+  let arr = [];
+  for (let i = 0; i < a; i++) {
+    arr.push(b);
+  }
+
+  return arr;
 }
 
 // Uncomment the code below and test the output
 
-// console.log(times(5, 'c')); // ['c', 'c', 'c', 'c', 'c']
+console.log(times(5, "c")); // ['c', 'c', 'c', 'c', 'c']
 // console.log(times(2, 'a')); // ['a', 'a']
 // console.log(times(0)); // []
 // console.log(times(5)); // ['test', 'test', 'test', 'test', 'test']
@@ -47,13 +71,15 @@ function times() {
     revert(['a', 'd', 'c', 'b']); // ['b', 'c', 'd', 'a']
     revert(['Ryan', 'John', 'Bran']); //['Bran', 'John', 'Ryan']
 */
-
-function revert() {
-  // your code
+let array = [];
+function revert(array) {
+  for (let i = array.length; i <= 0; i--) {
+    console.log(array[i]);
+  }
 }
 
 // Uncomment the code below and test the output
-// console.log(revert([1, 2, 3, 4])); // [4, 3, 2, 1]
+console.log(revert([1, 2, 3, 4])); // [4, 3, 2, 1]
 // console.log(revert(['a', 'd', 'c', 'b'])); // ['b', 'c', 'd', 'a']
 // console.log(revert(['Ryan', 'John', 'Bran'])); //['Bran', 'John', 'Ryan']
 
