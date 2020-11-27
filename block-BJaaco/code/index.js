@@ -43,7 +43,8 @@ for (let number of collection) {
     times(5); // ['test', 'test', 'test', 'test', 'test']
 */
 
-function times(a, b) {
+function times(a, b = "test") {
+  if (a === 0) return [];
   let arr = [];
   for (let i = 0; i < a; i++) {
     arr.push(b);
@@ -55,9 +56,9 @@ function times(a, b) {
 // Uncomment the code below and test the output
 
 console.log(times(5, "c")); // ['c', 'c', 'c', 'c', 'c']
-// console.log(times(2, 'a')); // ['a', 'a']
-// console.log(times(0)); // []
-// console.log(times(5)); // ['test', 'test', 'test', 'test', 'test']
+console.log(times(2, "a")); // ['a', 'a']
+console.log(times(0)); // []
+console.log(times(5)); // ['test', 'test', 'test', 'test', 'test']
 
 /*
 
@@ -71,17 +72,18 @@ console.log(times(5, "c")); // ['c', 'c', 'c', 'c', 'c']
     revert(['a', 'd', 'c', 'b']); // ['b', 'c', 'd', 'a']
     revert(['Ryan', 'John', 'Bran']); //['Bran', 'John', 'Ryan']
 */
-let array = [];
 function revert(array) {
-  for (let i = array.length; i <= 0; i--) {
-    console.log(array[i]);
+  let result = [];
+  for (let i = array.length - 1; i >= 0; i--) {
+    result.push(array[i]);
   }
+  return result;
 }
 
 // Uncomment the code below and test the output
 console.log(revert([1, 2, 3, 4])); // [4, 3, 2, 1]
-// console.log(revert(['a', 'd', 'c', 'b'])); // ['b', 'c', 'd', 'a']
-// console.log(revert(['Ryan', 'John', 'Bran'])); //['Bran', 'John', 'Ryan']
+console.log(revert(["a", "d", "c", "b"])); // ['b', 'c', 'd', 'a']
+console.log(revert(["Ryan", "John", "Bran"])); //['Bran', 'John', 'Ryan']
 
 /*
 
@@ -96,14 +98,30 @@ console.log(revert([1, 2, 3, 4])); // [4, 3, 2, 1]
     clear(['Ryan', null, 0,  'John', 'Bran']); //['Bran', 'John', 'Ryan']
 */
 
-function clear() {
-  // your code
+function isFalsy(value) {
+  return (
+    value === undefined ||
+    value === null ||
+    value === false ||
+    value === "" ||
+    value == 0
+  );
+}
+
+function clear(array) {
+  let result = [];
+  for (let value of array) {
+    if (isFalsy(!value)) {
+      result.push(value);
+    }
+  }
+  return result;
 }
 
 // Uncomment the code below and test the output
-// console.log(clear([1, 2, 3, 4, '', 0, null, undefined])); // [4, 3, 2, 1]
-// console.log(clear(['a', undefined, 'd', 0, 'c', 'b'])); // ['b', 'c', 'd', 'a']
-// console.log(clear(['Ryan', null, 0, 'John', 'Bran'])); //['Bran', 'John', 'Ryan']
+console.log(clear([1, 2, 3, 4, "", 0, null, undefined])); // [4, 3, 2, 1]
+console.log(clear(["a", undefined, "d", 0, "c", "b"])); // ['b', 'c', 'd', 'a']
+console.log(clear(["Ryan", null, 0, "John", "Bran"])); //['Bran', 'John', 'Ryan']
 
 /*
 
@@ -119,11 +137,15 @@ function clear() {
     arrayToObj(['Ryan', 'John']); // {0: 'Ryan', 1: 'John'}
 */
 
-function arrayToObj() {
-  // your code
+function arrayToObj(array) {
+  let result = {};
+  for (let i = 0; i < array.length; i++) {
+    result[i] = array[i];
+  }
+  return result;
 }
 
 // Uncomment the code below and test the output
-// console.log(arrayToObj([1, 2, 3, 4])); // {0: 1, 1: 2, 2: 3, 3: 4}
-// console.log(arrayToObj(['a', undefined, 'd'])); // {0: 'a', 1: undefined, 2: 'd'}
-// console.log(arrayToObj(['Ryan', 'John'])); // {0: 'Ryan', 1: 'John'}
+console.log(arrayToObj([1, 2, 3, 4])); // {0: 1, 1: 2, 2: 3, 3: 4}
+console.log(arrayToObj(["a", undefined, "d"])); // {0: 'a', 1: undefined, 2: 'd'}
+console.log(arrayToObj(["Ryan", "John"])); // {0: 'Ryan', 1: 'John'}
