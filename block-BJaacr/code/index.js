@@ -73,6 +73,11 @@ for (let people of gameOfThrones.houses[0].people) {
 
 // 10. Log the name and description of the people in house Lannisters whose name is `Tywin Lannister`
 
+for (let people of gameOfThrones.houses[1].people) {
+  if (people.name === "Tywin Lannister") {
+    console.log(`I am ${people.name} and my bio is ${people.description}`);
+  }
+}
 // 11. Push the name of the houses in an array named `houseNames` and Log the array
 
 let houseNames = [];
@@ -90,11 +95,18 @@ console.log(gameOfThrones.houses[1].people.length);
 
 // 14. Add the name and size of people in an object like {Starks: 4, Lannisters: 6} and log the object
 
+let houseObj = {};
+
+for (let i = 0; i < gameOfThrones.houses.length; i++) {
+  houseObj[i] = gameOfThrones.houses[i];
+  console.log(houseObj);
+}
+
 // 15. Log the name of all the people of all the houses in got one by one
 
 for (let house of gameOfThrones.houses) {
   for (let person of house.people) {
-    let { name } = person;
+    let name = person.name;
     console.log(name);
   }
 }
@@ -102,9 +114,9 @@ for (let house of gameOfThrones.houses) {
 // 16. Push all names into a new array named `allPeople` and log the value array.
 
 let allPeople = [];
-for (let people of gameOfThrones.houses) {
-  for (let name of people.people) {
-    allPeople.push(name.name);
+for (let house of gameOfThrones.houses) {
+  for (let person of house.people) {
+    allPeople.push(person.name);
   }
 }
 
@@ -116,8 +128,8 @@ console.log(allPeople.length);
 // 18. Push all descriptions into an array named `allDescription`
 
 let allDescription = [];
-for (let people of gameOfThrones.houses) {
-  for (let description of people.people) {
+for (let house of gameOfThrones.houses) {
+  for (let description of house.people) {
     allDescription.push(description.description);
   }
 }
@@ -130,8 +142,8 @@ console.log(allDescription.length);
 // 20. Only the the description whose length is more than 30. (use .length property on string to get the length)
 
 var description = [];
-for (let people of gameOfThrones.houses) {
-  for (let descriptionItem of people.people) {
+for (let house of gameOfThrones.houses) {
+  for (let descriptionItem of house.people) {
     description.push(descriptionItem.description);
   }
   if (description.length > 30) {
